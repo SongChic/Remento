@@ -1,0 +1,63 @@
+@import url(nanumbarungothic.css);
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+ul, ol, li {
+	padding: 0;
+	list-style: none;
+}
+
+
+/* header css (s) */
+
+.lnb {
+	height: 90px;
+	background: rgba(0, 0, 0, .5);
+}
+
+.lnb-container {
+	overflow: auto;
+	margin: 0 auto;
+	padding: 0 10px;
+	max-width: 1200px;
+}
+.lnb-container:AFTER {
+	content: "";
+	display: block;
+	clear: both;
+}
+.lnb-container > .logo {
+	float: left;
+	margin: 28px 0;
+}
+
+.lnb-container > .s-menu {
+	float: right;
+}
+.s-menu:AFTER {
+	content: "";
+	display: block;
+	clear: both;	
+}
+.menu-nav:AFTER {
+	content: "";
+	display: block;
+	clear: both;	
+}
+.menu-nav > li {
+	float: left;
+}
+.menu-nav > li > a {
+	display: block;
+	padding: 34px 15px;
+	font-size: 16px;
+	color: #fff;
+}
+
+.menu-nav > li > .drop-menu {
+	position: absolute;
+	display: none;
+}
+/* header css (e) */

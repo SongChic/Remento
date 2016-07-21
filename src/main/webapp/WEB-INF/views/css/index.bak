@@ -1,0 +1,148 @@
+.content-wrap {
+	position: relative;
+	height: 980px;
+}
+
+.commond-section {
+	
+}
+
+.background-section {
+	background-position: top center;
+	background-attachment: fixed;
+	background-size: cover; 
+}
+
+.remento {
+	background-image: url("../images/remento.gif");
+}
+.light-skill {
+/* 	background-image: url("../images/light_skill.gif"); */
+}
+
+.first-section-arrow {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 50px;
+	margin: 0 auto;
+	width: 60px;
+	height: 60px;
+}
+
+.carousel-btn-wrap {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	bottom: 50px;
+}
+
+.carousel > .carousel-btn-wrap ul:after {
+	clear: both;
+	content: "";
+	display: block;
+}
+.carousel > .carousel-btn-wrap li {
+	float: left;
+	margin-left: 10px;
+	width: 15px;
+	height: 15px;
+	border-radius: 15px;
+	background: #000;
+}
+.carousel > .carousel-btn-wrap li:FIRST-CHILD {
+	margin: 0;
+}
+
+.process-info-wrap {
+	background: #f2f2f2;
+}
+.process > ul:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.process > ul > li {
+	float: left;
+	position: relative;
+	margin-right: 48px;
+}
+.process > ul > li:LAST-CHILD{
+	margin: 0;
+}
+.process > ul > li > i {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 40px;
+}
+.process > ul > li > span {
+	display: block;
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+	background: black;
+}
+.scan-skill {
+	padding: 50px 30px;
+	background: #f2f2f2;
+}
+.scan-skill .title-box {
+}
+.model-preview {
+	position: relative;
+	padding: 20px;
+	width: 796px;
+	height: 700px;
+	background: #c8c8c8;
+/* 	overflow: hidden; */
+}
+.model-preview-line {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	right: 50%;
+	z-index: 100;
+	width: 0px;
+	height: 100%;
+	border-right: 1px solid #fff;
+}
+.model-preview > .controller {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+	z-index: 100;
+	margin: -20px 0 0 0;
+	width: 69px;
+	height: 40px;
+	background: url(../images/sticker.png) no-repeat !important;
+	cursor: e-resize;
+}
+.model-preview > .controller:ACTIVE {
+	cursor: e-resize !important;
+}
+
+.model-image-wrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.model-image-wrap > .model {
+	float: left;
+	position: absolute;
+}
+.model-3d {
+	left: 0;
+	width: 50%;
+	height:100%;
+	background: url(../images/3d_model.gif);
+}
+.model-figure {
+	right: 0;
+	width: 50%;
+	height: 100%;
+	background: url(../images/figure_model.gif);
+	background-position: 100% 0%;
+}

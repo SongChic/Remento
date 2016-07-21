@@ -1,0 +1,86 @@
+.join-container {
+	margin: 0 auto;
+	width: 565px;
+}
+.join-container > h2 {
+	margin-top: 37px;
+	margin-bottom: 39px;
+	font-size: 30px;
+	font-weight: bold;
+} 
+
+.join-wrap {
+	padding: 30px;
+	border: 1px solid #c7c6c6;
+	background: #fff;
+}
+
+.join-section h3 {
+	margin: 0;
+	margin-bottom: 15px;
+	font-size: 16px;
+	color: #969696;
+	font-weight: bold;
+}
+.essential-wrap {
+	margin-bottom: 25px;
+	border-bottom: 1px solid #d7d7d7;
+}
+
+.btn-input {
+	position: relative;
+	padding-right: 108px;
+	width: 503px;
+}
+.btn-input input, 
+.btn-input label {
+	margin: 0;
+	width: 100%;
+}
+.btn-input input {
+	padding-left: 15px;
+	border: 1px solid #d7d7d7;
+}
+.join-row {
+	margin-bottom: 25px;
+}
+.join-row label,
+.adress-info {
+	width: 100%;
+}
+.join-row input {
+	padding-left: 15px;
+	width: 100%;
+}
+.join-row input, 
+.btn-input button {
+	height: 43px;
+	border: 1px solid #d7d7d7;
+}
+.btn-input button {
+	padding: 0;
+	width: 100px;
+	border: 1px solid #ff9900;
+	border-radius: 0px;
+	color: #ff9900 !important;
+}
+.right-btn {
+	margin: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.stack-wrap {
+	
+}
+.stack-wrap label,
+.stack-wrap input {
+	margin: 0;
+	display: block;
+	width: 100%;
+}
+.stack-wrap label + label input {
+	border-top: 0;
+}
+
