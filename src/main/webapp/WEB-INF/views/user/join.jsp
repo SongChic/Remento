@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><%= RementoCommon.appName %> - 샘플</title>
+<title><%= RementoCommon.appName %> - 회원가입</title>
 
 <c:set value="${pageContext.request.contextPath }" var="ctx"/>
 <%@include file="/WEB-INF/views/css/meta.jsp" %>
@@ -23,52 +23,60 @@
 		<div class="join-container">
 			<h2>회원가입</h2>
 				<div class="join-wrap">
-					<form action="${ctx }/joinProc" id="joinForm">
+					<form action="${ctx }/joinProc" id="joinForm" method="post">
 						<div class="essential-wrap join-section">
 						<h3 class="essential-title">필수항목</h3>
 							<div class="join-row btn-input">
 								<label>
-									<input type="text" class="" id="userId" name="userId" placeholder="아이디">
+									<input type="text" id="userId" class="userId" name="userId" placeholder="아이디" />
 								</label>
 								<button type="button" class="btn btn-default right-btn id-check-btn">중복확인</button>
+								
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 							
 							<div class="join-row stack-wrap">
 								<label>
-									<input type="password" class="" id="userPw" name="userPw" placeholder="비밀번호">
+									<input type="password" id="userPw" class="userPw" name="userPw" placeholder="비밀번호" />
 								</label>
 								<label>
-									<input type="password" class="" id="pwCheck" name="pwCheck" placeholder="비밀번호 확인">
+									<input type="password" id="pwCheck" class="pwCheck" name="pwCheck" placeholder="비밀번호 확인" />
 								</label>
+								
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 							
 							<div class="join-row">
 								<label>
-									<input type="text" class="" id="userName" name="userName" placeholder="이름">
+									<input type="text" id="userName" class="userName" name="userName" placeholder="이름" />
 								</label>
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 							
 							<div class="join-row btn-input">
 								<label>
-									<input type="text" class="" id="userEmail" name="userEmail" placeholder="이메일">
+									<input type="text" id="userEmail" class="userEmail" name="userEmail" placeholder="이메일" />
 								</label>
 								<button type="button" class="btn btn-default right-btn">인증코드받기</button>
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 							
 							<div class="join-row btn-input">
 								<label>
-									<input type="text" class="" id="zipCode" name="zipCode" placeholder="우편번호">
+									<input type="text" id="zipCode" class="zipCode" name="zipCode" placeholder="우편번호" />
 								</label>
 								<button type="button" class="btn btn-default right-btn">우편번호검색</button>
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 							
 							<div class="join-row adress-info stack-wrap">
 								<label>
-									<input type="text" class="" id="adress" name="adress" placeholder="우편번호를 먼저 검색해주세요.">
+									<input type="text" id="adress" class="adress" name="adress" placeholder="우편번호를 먼저 검색해주세요." />
 								</label>
 								<label>
-									<input type="text" class="" id="etcAdress" name="etcAdress" placeholder="나머지 주소를 입력해주세요.">
+									<input type="text" id="etcAdress" class="etcAdress" name="etcAdress" placeholder="나머지 주소를 입력해주세요." />
 								</label>
+								<p class="error-msg hide">필수항목입니다.</p>
 							</div>
 						</div>
 						
@@ -105,7 +113,9 @@
 <script type="text/javascript">
 
 var idCheckState = false,
-	$form = $("#joinForm");
+	loginState = false,
+	$form = $("#joinForm"),
+	$input = $form.find("input");
 
 $("#userId").on('keyup', function( event ) {
   var keyCode = event.keyCode || event.which;
@@ -114,6 +124,10 @@ $("#userId").on('keyup', function( event ) {
  	event.preventDefault();
   	$(".id-check-btn").trigger("click");
   }
+});
+
+$input.on("blur", function ( event ) {
+	validation( $(this) );
 });
 
 $(".id-check-btn").on("click", function ( event ) {
@@ -151,34 +165,46 @@ $('#joinForm').on('keyup keypress', function( event ) {
 });
 
 $form.submit(function( event ) {
-	event.preventDefault();
+// 	event.preventDefault();
+	joinValidation( $(this) );
 	var $input = $(this).find("input");
 	
-	if ( !idCheckState ) {
+	if ( !idCheckState && !loginState ) {
 		return false;
 	}
 	
-	$.ajax({
-		cache : false,
- 		url : $(this).attr("action"),
-		method : "post",
-		data : {
-			userId : $(this).find("#userId"),
-			userPw : $(this).find("#userPw"),
-			userName : $(this).find("#userName"),
-			userEmail : $(this).find("#userEmail"),
-			zipCode : $(this).find("#zipCode"),
-			adress : $(this).find("#adress"),
-			etcAdress : $(this).find("#etcAdress"),
-		}
-	}).done( function ( response ){
-		console.log( response );
-	}).fail( function ( error ) {
-		console.log( error )
-	});
 	
-	console.log(  );
 });
+
+function validation ( data ) {
+	
+	var $target = data.closest(".join-row").find(".error-msg"),
+		errorMsg = {
+			"commonText" : "필수항목입니다.",
+			"lengthCheck" : "아이디는 최소 4자 이상입니다."
+		};
+
+	if ( data.hasClass( "userId" ) ) {
+		if ( data.val() == null || data.val() == "" ) {
+			$target.removeClass("hide").addClass("show").text( errorMsg["commonText"] );
+		} else if ( data.val().length < 4 ) {
+			$target.removeClass("hide").addClass("show").text( errorMsg["lengthCheck"] );
+		}
+	}
+}
+
+function joinValidation ( form ) {
+	$input = form.find(".essential-wrap input");
+	for ( var i = 0; i < $input.length; i++) {
+		console.log( $input[i] );
+		if ( $($input[i]).val() == null || $($input[i]).val() == "" ) {
+			loginState = false;
+		} else {
+			loginState = true;
+		}
+	}
+	
+}
 
 </script>
 

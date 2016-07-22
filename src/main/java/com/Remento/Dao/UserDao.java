@@ -5,6 +5,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import com.Remento.Model.User;
 import com.Remento.Util.GetQuery;
 
 @Component("userDao")
@@ -29,6 +30,29 @@ public class UserDao {
 		}
 		
 		return 1;
+	}
+	
+	public int joinProc ( User user ) {
+		
+		String sql = getQuery.get("userDao.signProc");
+		
+		Object[] params = {
+				user.getUserId(),
+				user.getUserPw(),
+				user.getUserName(),
+				user.getUserEmail(),
+				user.getZipCode(),
+				user.getAdress(),
+				user.getEtcAdress()
+		};
+		
+		try {
+			return jdbcTemplate.update(sql, params);
+		} catch (DataAccessException e) {
+			// TODO: handle exception
+		}
+		
+		return 0;
 	}
 
 }

@@ -9,6 +9,8 @@ public class User {
 	private String zipCode;
 	private String adress;
 	private String etcAdress;
+	private long created;
+	
 	public int getIndex() {
 		return index;
 	}

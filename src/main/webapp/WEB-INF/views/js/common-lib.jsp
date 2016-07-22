@@ -12,3 +12,4 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/remento-common.js"></script>
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/drop-menu.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/drop-menu.js"></script>

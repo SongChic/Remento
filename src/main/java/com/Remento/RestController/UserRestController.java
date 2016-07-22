@@ -44,5 +44,4 @@ public class UserRestController {
 		header.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		return new ResponseEntity<Integer> ( req, header, HttpStatus.OK );
 	}
-	
 }
